@@ -8,7 +8,7 @@ const forecast = (latitude, longitude, callback) => {
         } else if (response.error) {
             callback('Unable to find location', undefined)
         } else {
-            callback("",response.body.location.region)
+            callback("",{place_name:response.body.location.name,region:response.body.location.region,country:response.body.location.country})
         }
     })
 }
