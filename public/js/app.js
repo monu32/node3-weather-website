@@ -3,7 +3,7 @@
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
-
+const output = document.querySelector('#output')
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const address = search.value
@@ -11,9 +11,9 @@ weatherForm.addEventListener('submit', (e) => {
     fetch('/weather?address='+address).then((response) => {
         response.json().then((data) => {
             if (data.error) 
-                console.log("Error")
+                output.textContent=data.error
              else 
-                console.log(data)
+              output.textContent=[data.latitude,data.longitude,data.placeName]
         })
     })
 })
